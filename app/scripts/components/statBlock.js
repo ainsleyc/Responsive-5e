@@ -7,12 +7,12 @@ export default class extends React.Component {
     super(props);
     this.state = {
       stats: [
-        { key: 'Str', value: 10 },
-        { key: 'Dex', value: 10 },
-        { key: 'Con', value: 10 },
-        { key: 'Int', value: 10 },
-        { key: 'Wis', value: 10 },
-        { key: 'Cha', value: 10 }
+        { key: 'Str', value: 16, mod: 3 },
+        { key: 'Dex', value: 10, mod: 0 },
+        { key: 'Con', value: 14, mod: 2 },
+        { key: 'Int', value: 10, mod: 0 },
+        { key: 'Wis', value: 8, mod: -1 },
+        { key: 'Cha', value: 8, mod: -1 }
       ]
     };
   }
@@ -20,12 +20,16 @@ export default class extends React.Component {
   render() {
     return (
       <div className="hero-unit">
-        <ul>{this.state.stats.map(this.renderItem)}</ul>
+        {this.state.stats.map(this.renderStat)}
       </div>
     );
   }
 
-  renderItem(stat) {
+  renderStat(stat) {
+    return <StatPicker stat={stat}></StatPicker>;
+  }
+
+  renderMod(stat) {
     return <StatPicker stat={stat}></StatPicker>;
   }
 }
