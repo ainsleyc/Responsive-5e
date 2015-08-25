@@ -22,6 +22,7 @@ var bundler = {
     }));
   },
   bundle: function() {
+    console.log("Rebundling...");
     return this.w && this.w.bundle()
       .on('error', $.util.log.bind($.util, 'Browserify Error'))
       .pipe(source('app.js'))
